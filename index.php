@@ -20,8 +20,143 @@
         margin-top: 5rem!important;
       }
     </style>
+
+    <style>
+      :root {
+          --color-primary:rgb(171, 77, 0);
+          --color-secondary:rgb(255, 219, 162);
+          --color-neutral-lt: #fff;
+          --color-neutral-med: #ddd;
+          --color-neutral-dk: #444;
+          --headings-font: 'Saira Semi Condensed', sans-serif;
+          --shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      button, input[type="button"], input[type="submit"], button:focus, input:focus {
+          background: none;
+          border: none;
+          box-shadow: none;
+          cursor: pointer;
+          outline: none;
+      }
+
+      html {
+          scroll-behavior: smooth;
+      }
+
+      body {
+          font-family: var(--headings-font);
+          line-height: 1.5;
+          margin: 0;
+          padding: 0;
+      }
+
+      section {
+          height: 100vh;
+      }
+
+      #home, #about, #work, #contact {
+          background-color: var(--color-neutral-med);
+      }
+
+      .skew {
+          transform: skew(-20deg);
+      }
+
+      .un-skew {
+          transform: skew(20deg);
+      }
+
+      #nav-wrapper {
+          margin: 0 auto;
+          overflow: hidden;
+          position: fixed;
+          top: 0; left: 0;
+          width: 100%;
+          z-index: 100;
+      }
+
+      #nav {
+          background-color: var(--color-neutral-lt);
+          box-shadow: var(--shadow);
+          display: flex;
+          flex-direction: column;
+          height: 4em;
+          overflow: hidden;
+      }
+
+      #nav.nav-visible {
+          height: 100%;
+          overflow: auto;
+      }
+
+      .nav {
+          display: flex;
+          flex-grow: 1;
+          height: 4em;
+          line-height: 4em;
+      }
+
+      .nav-link, .logo {
+          padding: 0 1em;
+      }
+
+      span.gradient {
+          background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+          margin-right: auto;
+          padding: 0 1em;
+          position: relative;
+          right: 1em;
+      }
+
+      .nav-link {
+          border-top: 0.5px solid var(--color-neutral-med);
+          color: var(--color-neutral-dk);
+          text-align: center;
+          text-transform: uppercase;
+      }
+
+      .nav-link:hover, a:hover {
+          text-decoration: underline;
+      }
+
+      a:link, a:visited, a:active {
+          color: var(--color-primary);
+          text-decoration: none;
+      }
+
+      @media (min-width: 800px) {
+          #nav {
+              flex-direction: row;
+          }
+
+          .nav-link {
+              border-top: none;
+          }
+
+          .right {
+              display: flex;
+              flex-direction: row;
+              height: auto;
+              justify-content: flex-end;
+              left: 1.5em;
+              position: relative;
+          }
+
+          .btn-nav {
+              display: none;
+          }
+
+          a:link.active, a:visited.active, a:active.active {
+              background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+              color: var(--color-neutral-lt);
+          }
+      }
+    </style>
+
     <body id="page-top">
-        <!-- Navigation-->
+      <!--
+        
         <div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-body text-white">
         </div>
@@ -39,13 +174,29 @@
                       <?php else: ?>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="javascript:void(0)" id="login_now">Login</a></li>
                       <?php endif; ?>
-                       
-                        
-                     
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>-->
+
+  <!--Nav-->
+  <header id="nav-wrapper">
+    <nav id="nav">
+      <div class="nav left">
+        <span class="gradient skew"><h1 class="logo un-skew"><a href="#home" class="text-white">VSU Auctions</a></h1></span>
+        <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+      </div>
+      <div class="nav right">
+        <a href="#home" class="nav-link active"><span class="nav-link-span"><span class="u-nav">Home</span></span></a>
+        <a href="#about" class="nav-link"><span class="nav-link-span"><span class="u-nav">About</span></span></a>
+        <a href="#work" class="nav-link"><span class="nav-link-span"><span class="u-nav">Work</span></span></a>
+        <a href="#contact" class="nav-link"><span class="nav-link-span"><span class="u-nav">Contact</span></span></a>
+      </div>
+    </nav>
+  </header>
+
+
+
   <main id="main-field">
         <?php 
         $page = isset($_GET['page']) ? $_GET['page'] : 'home';
@@ -111,24 +262,23 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center">
-                        <h2 class="mt-0 text-white">Contact us</h2>
+                        <h2 class="mt-0 text-primary">Contact us</h2>
                         <hr class="divider my-4" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
                         <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
-                        <div class="text-white"><?php echo $_SESSION['system']['contact'] ?></div>
+                        <div class="text-primary">+1(804)524-5210</div>
                     </div>
                     <div class="col-lg-4 mr-auto text-center">
                         <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
-                        <!-- Make sure to change the email address in BOTH the anchor text and the link target below!-->
-                        <a class="d-block" href="mailto:<?php echo $_SESSION['system']['email'] ?>"><?php echo $_SESSION['system']['email'] ?></a>
+                        <a class="d-block text-primary">vsuauctions@vsu.edu</a>
                     </div>
                 </div>
             </div>
             <br>
-            <div class="container"><div class="small text-center text-muted">Copyright © 2020 - <?php echo $_SESSION['system']['name'] ?> | <a href="https://www.sourcecodester.com/" target="_blank">Sourcecodester</a></div></div>
+            <div class="container"><div class="small text-center text-muted">Copyright © 2025 - Parallel & Distrubited SPR 25 Project | Albert & Adonis</div></div>
         </footer>
         
        <?php include('footer.php') ?>
@@ -145,6 +295,45 @@
         location.href = 'index.php?page=search&'+$(this).serialize()
       })
     </script>
+
+    <script>
+          var util = {
+      mobileMenu() {
+        $("#nav").toggleClass("nav-visible");
+      },
+      windowResize() {
+        if ($(window).width() > 800) {
+          $("#nav").removeClass("nav-visible");
+        }
+      },
+      scrollEvent() {
+        var scrollPosition = $(document).scrollTop();
+        
+        $.each(util.scrollMenuIds, function(i) {
+          var link = util.scrollMenuIds[i],
+              container = $(link).attr("href"),
+              containerOffset = $(container).offset().top,
+              containerHeight = $(container).outerHeight(),
+              containerBottom = containerOffset + containerHeight;
+
+          if (scrollPosition < containerBottom - 20 && scrollPosition >= containerOffset - 20) {
+            $(link).addClass("active");
+          } else {
+            $(link).removeClass("active");
+          }
+        });
+      }
+    };
+
+    $(document).ready(function() {
+      
+      util.scrollMenuIds = $("a.nav-link[href]");
+      $("#menu").click(util.mobileMenu);
+      $(window).resize(util.windowResize);
+      $(document).scroll(util.scrollEvent);
+      
+    });
+</script>
     <?php $conn->close() ?>
 
 </html>

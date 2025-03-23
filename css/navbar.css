@@ -1,0 +1,130 @@
+:root {
+    --color-primary: #f857a8;
+    --color-secondary: #ff5858;
+    --color-neutral-lt: #fff;
+    --color-neutral-med: #ddd;
+    --color-neutral-dk: #444;
+    --headings-font: 'Saira Semi Condensed', sans-serif;
+    --shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+button, input[type="button"], input[type="submit"], button:focus, input:focus {
+    background: none;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    outline: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--headings-font);
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    height: 100vh;
+}
+
+#home, #about, #work, #contact {
+    background-color: var(--color-neutral-med);
+}
+
+.skew {
+    transform: skew(-20deg);
+}
+
+.un-skew {
+    transform: skew(20deg);
+}
+
+#nav-wrapper {
+    margin: 0 auto;
+    overflow: hidden;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+#nav {
+    background-color: var(--color-neutral-lt);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    height: 4em;
+    overflow: hidden;
+}
+
+#nav.nav-visible {
+    height: 100%;
+    overflow: auto;
+}
+
+.nav {
+    display: flex;
+    flex-grow: 1;
+    height: 4em;
+    line-height: 4em;
+}
+
+.nav-link, .logo {
+    padding: 0 1em;
+}
+
+span.gradient {
+    background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+    margin-right: auto;
+    padding: 0 1em;
+    position: relative;
+    right: 1em;
+}
+
+.nav-link {
+    border-top: 0.5px solid var(--color-neutral-med);
+    color: var(--color-neutral-dk);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.nav-link:hover, a:hover {
+    text-decoration: underline;
+}
+
+a:link, a:visited, a:active {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+@media (min-width: 800px) {
+    #nav {
+        flex-direction: row;
+    }
+
+    .nav-link {
+        border-top: none;
+    }
+
+    .right {
+        display: flex;
+        flex-direction: row;
+        height: auto;
+        justify-content: flex-end;
+        left: 1.5em;
+        position: relative;
+    }
+
+    .btn-nav {
+        display: none;
+    }
+
+    a:link.active, a:visited.active, a:active.active {
+        background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+        color: var(--color-neutral-lt);
+    }
+}
